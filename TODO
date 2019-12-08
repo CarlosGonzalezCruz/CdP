@@ -1,0 +1,19 @@
+El juego:
+    ✔ Tablero
+    ✔ Ejército
+    ✔ Arquitecto
+    ✔ Combate
+    ✔ Control de la simulación
+
+La inteligencia artificial:
+    ✔ Stat
+    ✔ Orden
+    ✔ Acción
+    ☐ Perfil
+    ☐ Planificación
+    ✔ Longitud de ruta
+
+Extras:
+    ☐ Altitud del terreno
+    ☐ Mar, islas y barcos
+    ☐ Relaciones internacionales
