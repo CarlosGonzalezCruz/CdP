@@ -9,8 +9,6 @@ public class Army : Actionable {
 
     public const int REGULAR_DAMAGE = 1;
 
-    public Actionable testDestination;
-
     private Suit suit;
 
     private Direction direction;
@@ -33,6 +31,8 @@ public class Army : Actionable {
         base.Start();
         this.CurrentCell = this.CurrentCell ?? BoardManager.Instance.GetCell(Vector2Int.zero);
         this.Troops = this.Troops;
+        this.nation.Architect.onDefeatedBy += this.OnArchitectDefeated;
+        this.nation.Armies.Add(this);
     }
 
     protected override void Update() {
@@ -95,6 +95,7 @@ public class Army : Actionable {
         }
         private set {
             this.nation = value;
+            this.ApplyNationalColor();
         }
     }
     #endregion
@@ -103,22 +104,23 @@ public class Army : Actionable {
     public void Move(Direction direction) {
         this.direction = direction;
         var targetCell = this.CurrentCell.GetNeighbour(direction);
-        if(targetCell.Army == null) {
+        if(targetCell?.Army == null) {
             this.CurrentCell = targetCell;
         }
     }
 
     public void Attack(Direction direction) {
         this.direction = direction;
-        var target = this.CurrentCell.GetNeighbour(direction).Army;
+        var target = this.CurrentCell.GetNeighbour(direction)?.Army;
         if(target != null) {
             target.Troops -= target.suit.IsWeakAgainst(this.suit) ? WEAKNESS_DAMAGE : REGULAR_DAMAGE;
+            target.Nation.Architect.InvokeAttackedEvent(this.Nation.Architect);
         }
     }
 
     public void Join(Direction direction) {
         this.direction = direction;
-        var target = this.CurrentCell.GetNeighbour(direction).Army;
+        var target = this.CurrentCell.GetNeighbour(direction)?.Army;
         if(target != null) {
             target.Troops += this.Troops;
             this.Dispose();
@@ -129,7 +131,7 @@ public class Army : Actionable {
         this.direction = direction;
         var targetCell = this.CurrentCell.GetNeighbour(direction);
         var newArmyTroops = Mathf.FloorToInt(this.Troops * 0.5f);
-        if(targetCell.Army == null && newArmyTroops > 0) {
+        if(targetCell != null && targetCell.Army == null && newArmyTroops > 0) {
             var newArmy = GameObject.Instantiate(this.gameObject).GetComponent<Army>();
             newArmy.Troops = newArmyTroops;
             newArmy.CurrentCell = targetCell;
@@ -145,9 +147,14 @@ public class Army : Actionable {
         base.Dispose();
         this.renderer.Dispose();
         this.CurrentCell.Army = null;
+        this.Nation.Armies.Remove(this);
         GameManager.Simulation.onNextTurn -= this.OnNextTurn;
     }
     #endregion
+
+    public override string ToString() {
+        return $"Army of suit {this.Suit} at position {this.Coordinates} belonging to nation {this.Nation}";
+    }
 
     public static Army Instantiate(Cell cell, Nation nation, Suit suit) {
         var ret = GameObject.Instantiate(GameManager.Instance.armyPrefab, GameManager.Instance.armyContainer.transform).GetComponent<Army>();
@@ -161,10 +168,6 @@ public class Army : Actionable {
         base.OnNextTurn(turn);
         this.ApplyNationalColor();
         this.renderer.Suit = this.suit;
-
-        if(this.testDestination != null) {
-            Orders.MOVE_TOWARDS.Execute(new OrderInfo(subject: this, target: this.testDestination));
-        }
     }
 
     private void ApplyNationalColor() {
@@ -174,5 +177,11 @@ public class Army : Actionable {
         else {
             this.renderer.Color = GameManager.Instance.unclaimedColor;
         }
+    }
+
+    private void OnArchitectDefeated(Architect other, Architect subject) {
+        this.Nation.Armies.Remove(this);
+        this.Nation = other.Nation;
+        this.Nation.Armies.Add(this);
     }
 }

@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour {
     public GameObject armyContainer;
 
     public GameObject architectContainer;
+
+    public int randomSeed;
     #endregion
 
     private Simulation simulation;
@@ -45,7 +47,7 @@ public class GameManager : MonoBehaviour {
         this.InitSingleton();
         this.simulation = this.GetComponent<Simulation>();
         this.uiManager = GameObject.Find("UI").GetComponent<UIManager>();
-        
+        Random.InitState(this.randomSeed);
         WorldState.Init();
     }
     #endregion

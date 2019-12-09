@@ -22,6 +22,7 @@ public class BoardManager : MonoBehaviour {
     public Cell cellPrefab;
     public int width;
     public int height;
+    public bool wrapsAround;
 
     private Dictionary<Vector2Int, Cell> cells;
 
@@ -43,8 +44,16 @@ public class BoardManager : MonoBehaviour {
     }
 
     public Cell GetCell(Vector2Int coordinates) {
-        var boundCoordinates = new Vector2Int(this.Modulo(coordinates.x, this.width), this.Modulo(coordinates.y, this.height));
-        return this.cells[boundCoordinates];
+        if(this.wrapsAround) {
+            var boundCoordinates = new Vector2Int(this.Modulo(coordinates.x, this.width), this.Modulo(coordinates.y, this.height));
+            return this.cells[boundCoordinates];
+        } else {
+            if(coordinates.x < 0 || coordinates.x >= this.width || coordinates.y < 0 || coordinates.y >= this.height) {
+                return null;
+            } else {
+                return this.cells[coordinates];
+            }
+        }
     }
 
     public Bounds GetWorldBounds() {

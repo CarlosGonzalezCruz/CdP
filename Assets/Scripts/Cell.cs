@@ -11,8 +11,10 @@ public class Cell : Actionable {
     [SerializeField]
     private Army army;
 
+    [SerializeField]
     private Suit? scheduledTroop;
 
+    [SerializeField]
     private int scheduledTroopCounter;
 
     private Dictionary<Direction, Cell> neighbours;
@@ -29,20 +31,13 @@ public class Cell : Actionable {
         this.scheduledTroop = null;
         this.scheduledTroopCounter = 0;
         this.distances = new Dictionary<Actionable, int>();
+        if(this.nation != null) {
+            this.ConnectToNation();
+        }
     }
 
     protected override void Start() {
         this.RegisterNeighbours();
-    }
-
-    protected void OnGUI() {
-        UnityEditor.Handles.color = Color.black;
-        var style = new GUIStyle();
-        style.normal.textColor = Color.black;
-        var playerCell = GameObject.Find("Piece red").GetComponent<Army>().testDestination;
-        if(this.distances.ContainsKey(playerCell)) {
-            UnityEditor.Handles.Label(this.transform.position + Vector3.up, this.distances[playerCell].ToString(), style);
-        }
     }
     #endregion
 
@@ -79,8 +74,19 @@ public class Cell : Actionable {
             return this.nation;
         }
         set {
+            if(this.nation == value) {
+                return;
+            }
+            if(this.nation != null) {
+                this.nation.Cells.Remove(this);
+            }
+            value.Cells.Add(this);
+            if(this.nation != null && this.nation.Size == 0) {
+                this.nation.Architect.InvokeDefeatedEvent(value.Architect, this.nation.Architect);
+            }
             this.nation = value;
             this.scheduledTroop = null;
+            
         }
     }
 
@@ -99,8 +105,25 @@ public class Cell : Actionable {
         return this.neighbours.Values.ToList();
     }
 
+    public void ConnectToNation() {
+        this.Nation = this.nation;
+        this.Nation.Cells.Add(this);
+    }
+
     public void ScheduleArmy(Suit suit) {
-        this.scheduledTroop = suit;
+        if(this.scheduledTroopCounter <= 0) {
+            if(Random.value < 0.1) {
+                var values = System.Enum.GetValues(typeof(Suit));
+                this.scheduledTroop = (Suit) values.GetValue(Mathf.RoundToInt(Random.Range(0, values.Length)));
+            } else {
+                this.scheduledTroop = suit;
+            }
+            this.scheduledTroopCounter = 3;
+        }
+    }
+
+    public override string ToString() {
+        return $"Cell at position {this.Coordinates} belonging to nation {this.Nation}";
     }
 
     protected override void OnNextTurn(int turn) {
@@ -132,7 +155,8 @@ public class Cell : Actionable {
         if (this.scheduledTroop.HasValue) {
             this.scheduledTroopCounter--;
             if (this.scheduledTroopCounter <= 0) {
-                Army.Instantiate(this, this.Nation, this.scheduledTroop.Value);
+                var army = Army.Instantiate(this, this.Nation, this.scheduledTroop.Value).GetComponent<Army>();
+                army.Troops = 10;
                 this.scheduledTroop = null;
             }
         }

@@ -6,8 +6,8 @@ public enum Movement {
     [MovementInfo(Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT)]
     ORTHOGONAL,
 
-    [MovementInfo(Direction.UPLEFT, Direction.UPRIGHT, Direction.DOWNLEFT, Direction.DOWNRIGHT)]
-    DIAGONAL,
+    //// [MovementInfo(Direction.UPLEFT, Direction.UPRIGHT, Direction.DOWNLEFT, Direction.DOWNRIGHT)]
+    //// DIAGONAL,
 
     [MovementInfo(Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT, Direction.UPLEFT, Direction.UPRIGHT, Direction.DOWNLEFT, Direction.DOWNRIGHT)]
     FULL
@@ -56,9 +56,9 @@ public static class MovementExtensionMethods {
             case Movement.ORTHOGONAL:
                 ret = MovementExtensionMethods.OrthogonalHeuristics;
                 break;
-            case Movement.DIAGONAL:
-                ret = MovementExtensionMethods.DiagonalHeuristics;
-                break;
+            //// case Movement.DIAGONAL:
+            ////    ret = MovementExtensionMethods.DiagonalHeuristics;
+            ////    break;
             case Movement.FULL:
                 ret = MovementExtensionMethods.FullHeuristics;
                 break;

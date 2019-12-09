@@ -162,6 +162,7 @@ MonoBehaviour:
   coordinates: {x: 4, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &19703408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -288,6 +289,7 @@ MonoBehaviour:
   coordinates: {x: 2, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &28642506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +416,7 @@ MonoBehaviour:
   coordinates: {x: 2, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &98394604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,6 +543,7 @@ MonoBehaviour:
   coordinates: {x: 0, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &104893849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +670,7 @@ MonoBehaviour:
   coordinates: {x: 0, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &138970679
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,6 +797,7 @@ MonoBehaviour:
   coordinates: {x: 2, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &141644263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -918,6 +924,7 @@ MonoBehaviour:
   coordinates: {x: 3, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &154385794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1051,7 @@ MonoBehaviour:
   coordinates: {x: 3, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &169031933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,6 +1321,7 @@ MonoBehaviour:
   coordinates: {x: 1, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &236962259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1439,6 +1448,7 @@ MonoBehaviour:
   coordinates: {x: 1, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &256497797
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1565,6 +1575,7 @@ MonoBehaviour:
   coordinates: {x: 0, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &357727933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1691,6 +1702,7 @@ MonoBehaviour:
   coordinates: {x: 6, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &379963361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1813,6 +1825,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &403734111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 403734112}
+  - component: {fileID: 403734114}
+  - component: {fileID: 403734113}
+  m_Layer: 0
+  m_Name: NationD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &403734112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403734111}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 567654126}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &403734113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403734111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd07d788933f7024b9ed53050e9e553f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileMode: 0
+--- !u!114 &403734114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403734111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fcd7f5d8232a094c9e81b33e829f325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armyColor: {r: 1, g: 0.8624264, b: 0, a: 0}
+  cellColor: {r: 1, g: 0.8894749, b: 0.37254906, a: 0}
 --- !u!1 &415324873
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,6 +1934,7 @@ MonoBehaviour:
   coordinates: {x: 6, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &415324876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1987,8 +2059,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coordinates: {x: 0, y: 0}
-  nation: {fileID: 0}
+  nation: {fileID: 1921776991}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &421217530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2065,6 +2138,65 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 421217527}
   m_Mesh: {fileID: 4300000, guid: 86ee468d8f1ee6541916f7ee4f04989c, type: 3}
+--- !u!1 &428129080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 428129081}
+  - component: {fileID: 428129083}
+  - component: {fileID: 428129082}
+  m_Layer: 0
+  m_Name: NationC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &428129081
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428129080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 567654126}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &428129082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428129080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd07d788933f7024b9ed53050e9e553f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileMode: 0
+--- !u!114 &428129083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428129080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fcd7f5d8232a094c9e81b33e829f325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armyColor: {r: 0.048704028, g: 1, b: 0, a: 0}
+  cellColor: {r: 0.40035522, g: 1, b: 0.37254906, a: 0}
 --- !u!1 &459440134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,6 +2247,7 @@ MonoBehaviour:
   coordinates: {x: 7, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &459440137
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2241,6 +2374,7 @@ MonoBehaviour:
   coordinates: {x: 3, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &500800103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2350,6 +2484,7 @@ MonoBehaviour:
     type: 3}
   width: 10
   height: 7
+  wrapsAround: 0
 --- !u!4 &513285196
 Transform:
   m_ObjectHideFlags: 0
@@ -2565,11 +2700,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unclaimedColor: {r: 1, g: 1, b: 1, a: 1}
   canvas: {fileID: 1422037899}
-  allowedMovement: 2
+  allowedMovement: 1
   armyPrefab: {fileID: 3624547421257635220, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
     type: 3}
   armyContainer: {fileID: 2111456567}
   architectContainer: {fileID: 567654125}
+  randomSeed: 0
 --- !u!4 &555777137
 Transform:
   m_ObjectHideFlags: 0
@@ -2627,7 +2763,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1921776990}
-  - {fileID: 1998466668}
+  - {fileID: 1499018991}
+  - {fileID: 428129081}
+  - {fileID: 403734112}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2681,6 +2819,7 @@ MonoBehaviour:
   coordinates: {x: 8, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &574873200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2807,6 +2946,7 @@ MonoBehaviour:
   coordinates: {x: 2, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &578732995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2883,131 +3023,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578732992}
   m_Mesh: {fileID: 4300000, guid: 86ee468d8f1ee6541916f7ee4f04989c, type: 3}
---- !u!1001 &600889904
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2111456568}
-    m_Modifications:
-    - target: {fileID: 3624547421257635220, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_Name
-      value: Piece red
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257635220, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.1801363
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.6989062
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.5447283
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547422856047183, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547422856047183, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547422856047183, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547422856047183, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: suit
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: nation
-      value: 
-      objectReference: {fileID: 1921776991}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: currentCell
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: troops
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: testDestination
-      value: 
-      objectReference: {fileID: 1840275549}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: coordinates.y
-      value: 3
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 42fd451f5c43cef4b86589f6d3ab7a7b, type: 3}
---- !u!4 &600889905 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-    type: 3}
-  m_PrefabInstance: {fileID: 600889904}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &616970663
 GameObject:
   m_ObjectHideFlags: 0
@@ -3058,6 +3073,7 @@ MonoBehaviour:
   coordinates: {x: 1, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &616970666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3184,6 +3200,7 @@ MonoBehaviour:
   coordinates: {x: 9, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &627761094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3310,6 +3327,7 @@ MonoBehaviour:
   coordinates: {x: 6, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &646899314
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3436,6 +3454,7 @@ MonoBehaviour:
   coordinates: {x: 5, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &649719204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3562,6 +3581,7 @@ MonoBehaviour:
   coordinates: {x: 6, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &653773114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3688,6 +3708,7 @@ MonoBehaviour:
   coordinates: {x: 4, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &679996703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3814,6 +3835,7 @@ MonoBehaviour:
   coordinates: {x: 4, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &690952008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3940,6 +3962,7 @@ MonoBehaviour:
   coordinates: {x: 9, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &691011108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,6 +4089,7 @@ MonoBehaviour:
   coordinates: {x: 7, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &695750843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4192,6 +4216,7 @@ MonoBehaviour:
   coordinates: {x: 4, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &703649934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4318,6 +4343,7 @@ MonoBehaviour:
   coordinates: {x: 6, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &746645363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4444,6 +4470,7 @@ MonoBehaviour:
   coordinates: {x: 9, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &766543510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4570,6 +4597,7 @@ MonoBehaviour:
   coordinates: {x: 2, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &782232741
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4696,6 +4724,7 @@ MonoBehaviour:
   coordinates: {x: 7, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &858833442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4822,6 +4851,7 @@ MonoBehaviour:
   coordinates: {x: 4, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &926692613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4948,6 +4978,7 @@ MonoBehaviour:
   coordinates: {x: 8, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &933362682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5074,6 +5105,7 @@ MonoBehaviour:
   coordinates: {x: 8, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1038160552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5200,6 +5232,7 @@ MonoBehaviour:
   coordinates: {x: 5, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1076075347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5326,6 +5359,7 @@ MonoBehaviour:
   coordinates: {x: 6, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1076577761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5452,6 +5486,7 @@ MonoBehaviour:
   coordinates: {x: 4, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1131926207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5578,6 +5613,7 @@ MonoBehaviour:
   coordinates: {x: 8, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1152135447
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5704,6 +5740,7 @@ MonoBehaviour:
   coordinates: {x: 3, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1159293677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5830,6 +5867,7 @@ MonoBehaviour:
   coordinates: {x: 3, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1191908495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5956,6 +5994,7 @@ MonoBehaviour:
   coordinates: {x: 7, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1211888941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6082,6 +6121,7 @@ MonoBehaviour:
   coordinates: {x: 0, y: 4}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1250725557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6208,6 +6248,7 @@ MonoBehaviour:
   coordinates: {x: 3, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1256678021
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6334,6 +6375,7 @@ MonoBehaviour:
   coordinates: {x: 5, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1274494378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6460,6 +6502,7 @@ MonoBehaviour:
   coordinates: {x: 8, y: 0}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1297554580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6536,106 +6579,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297554577}
   m_Mesh: {fileID: 4300000, guid: 86ee468d8f1ee6541916f7ee4f04989c, type: 3}
---- !u!1001 &1301343359
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 2111456568}
-    m_Modifications:
-    - target: {fileID: 3624547421257635220, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_Name
-      value: Piece blue
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257635220, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.1801363
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -2.6989062
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.5447283
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: nation
-      value: 
-      objectReference: {fileID: 1998466667}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: currentCell
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: troops
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 2532970701116208225, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-        type: 3}
-      propertyPath: suit
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 42fd451f5c43cef4b86589f6d3ab7a7b, type: 3}
---- !u!4 &1301343360 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3624547421257271732, guid: 42fd451f5c43cef4b86589f6d3ab7a7b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1301343359}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1422037896
 GameObject:
   m_ObjectHideFlags: 0
@@ -6800,6 +6743,7 @@ MonoBehaviour:
   coordinates: {x: 5, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1434346300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6926,6 +6870,7 @@ MonoBehaviour:
   coordinates: {x: 7, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1435003499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7002,6 +6947,65 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1435003496}
   m_Mesh: {fileID: 4300000, guid: 86ee468d8f1ee6541916f7ee4f04989c, type: 3}
+--- !u!1 &1499018990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1499018991}
+  - component: {fileID: 1499018993}
+  - component: {fileID: 1499018992}
+  m_Layer: 0
+  m_Name: NationB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1499018991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499018990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 567654126}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499018992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499018990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd07d788933f7024b9ed53050e9e553f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileMode: 0
+--- !u!114 &1499018993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499018990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fcd7f5d8232a094c9e81b33e829f325, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armyColor: {r: 0, g: 0.07855177, b: 1, a: 0}
+  cellColor: {r: 0.37254906, g: 0.4882382, b: 1, a: 0}
 --- !u!1 &1515862367
 GameObject:
   m_ObjectHideFlags: 0
@@ -7052,6 +7056,7 @@ MonoBehaviour:
   coordinates: {x: 9, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1515862370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7178,6 +7183,7 @@ MonoBehaviour:
   coordinates: {x: 6, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1594841698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7304,6 +7310,7 @@ MonoBehaviour:
   coordinates: {x: 5, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1596296122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7430,6 +7437,7 @@ MonoBehaviour:
   coordinates: {x: 7, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1604243850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7554,8 +7562,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coordinates: {x: 9, y: 6}
-  nation: {fileID: 0}
+  nation: {fileID: 1499018993}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1618958078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7682,6 +7691,7 @@ MonoBehaviour:
   coordinates: {x: 8, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1628199164
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7920,6 +7930,7 @@ MonoBehaviour:
   coordinates: {x: 2, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1633278058
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8046,6 +8057,7 @@ MonoBehaviour:
   coordinates: {x: 5, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1697713177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8172,6 +8184,7 @@ MonoBehaviour:
   coordinates: {x: 8, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1732071616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8298,6 +8311,7 @@ MonoBehaviour:
   coordinates: {x: 1, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1745589454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8501,6 +8515,7 @@ MonoBehaviour:
   coordinates: {x: 0, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1763553245
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8625,8 +8640,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coordinates: {x: 9, y: 0}
-  nation: {fileID: 0}
+  nation: {fileID: 403734114}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1811610115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8753,6 +8769,7 @@ MonoBehaviour:
   coordinates: {x: 5, y: 3}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1840275550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8879,6 +8896,7 @@ MonoBehaviour:
   coordinates: {x: 3, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1843357274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9003,8 +9021,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coordinates: {x: 0, y: 6}
-  nation: {fileID: 0}
+  nation: {fileID: 428129083}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1885786787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9131,6 +9150,7 @@ MonoBehaviour:
   coordinates: {x: 1, y: 5}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1886660771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9217,6 +9237,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1921776990}
   - component: {fileID: 1921776991}
+  - component: {fileID: 1921776992}
   m_Layer: 0
   m_Name: NationA
   m_TagString: Untagged
@@ -9252,6 +9273,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   armyColor: {r: 1, g: 0, b: 0, a: 0}
   cellColor: {r: 1, g: 0.3726415, b: 0.3726415, a: 0}
+--- !u!114 &1921776992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921776989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd07d788933f7024b9ed53050e9e553f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profileMode: 0
 --- !u!1 &1923910460
 GameObject:
   m_ObjectHideFlags: 0
@@ -9302,6 +9336,7 @@ MonoBehaviour:
   coordinates: {x: 7, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1923910463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9428,6 +9463,7 @@ MonoBehaviour:
   coordinates: {x: 1, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &1963103906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9504,51 +9540,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1963103903}
   m_Mesh: {fileID: 4300000, guid: 86ee468d8f1ee6541916f7ee4f04989c, type: 3}
---- !u!1 &1998466666
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1998466668}
-  - component: {fileID: 1998466667}
-  m_Layer: 0
-  m_Name: NationB
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1998466667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998466666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fcd7f5d8232a094c9e81b33e829f325, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armyColor: {r: 0, g: 0.07460141, b: 1, a: 0}
-  cellColor: {r: 0.36320752, g: 0.41065484, b: 1, a: 0}
---- !u!4 &1998466668
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1998466666}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 567654126}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2003811790
 GameObject:
   m_ObjectHideFlags: 0
@@ -9636,6 +9627,7 @@ MonoBehaviour:
   coordinates: {x: 2, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &2024656807
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9762,6 +9754,7 @@ MonoBehaviour:
   coordinates: {x: 4, y: 2}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &2037785560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9888,6 +9881,7 @@ MonoBehaviour:
   coordinates: {x: 1, y: 6}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &2046366459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10014,6 +10008,7 @@ MonoBehaviour:
   coordinates: {x: 9, y: 1}
   nation: {fileID: 0}
   army: {fileID: 0}
+  scheduledTroopCounter: 0
 --- !u!114 &2086207433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10116,9 +10111,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.1801363, y: 2.6989062, z: -2.5447283}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 600889905}
-  - {fileID: 1301343360}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

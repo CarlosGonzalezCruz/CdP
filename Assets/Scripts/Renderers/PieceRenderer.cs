@@ -78,6 +78,9 @@ public class PieceRenderer : MonoBehaviour {
 
     private void ApplyColor(Color color) {
         var block = new MaterialPropertyBlock();
+        if(this.renderer == null) {
+            return;
+        }
         this.renderer.GetPropertyBlock(block);
         block.SetColor("_Color", color);
         this.renderer.SetPropertyBlock(block);

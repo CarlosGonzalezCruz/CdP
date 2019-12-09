@@ -74,7 +74,8 @@ public abstract class Actionable : MonoBehaviour {
 
     public bool IsAdjacentTo(Actionable other) {
         var offset = other.coordinates - this.coordinates;
-        return GameManager.Instance.allowedMovement.Allows(offset.GetDirection());
+        return offset.x >= -1 && offset.x <= 1 && offset.y >= -1 && offset.y <= 1
+            && GameManager.Instance.allowedMovement.Allows(offset.GetDirection());
     }
 
     public Actionable FindNearest(System.Func<Actionable, bool> criteria, Actionable[] found = null) {
@@ -110,7 +111,7 @@ public abstract class Actionable : MonoBehaviour {
         return ret;
     }
 
-    public Actionable FindNearest<T>(System.Func<T, bool> criteria, T[] found = null) where T : Actionable {
+    public Actionable FindNearestOfType<T>(System.Func<T, bool> criteria, T[] found = null) where T : Actionable {
         return this.FindNearest((actionable) => actionable is T && criteria((T) actionable), found);
     }
 
@@ -142,6 +143,10 @@ public abstract class Actionable : MonoBehaviour {
 
         while(currentCell != destCell && pendingCells.Count > 0) {
             foreach(Cell neighbour in currentCell.GetNeighbours()) {
+                if(neighbour == null) {
+                    continue;
+                }
+
                 var neighbourDistance = currentCell.Distances[origin] + 1; //TODO Cambiar esto cuando se implemente altura del terreno
 
                 if(!neighbour.Distances.ContainsKey(origin) || neighbour.Distances[origin] > neighbourDistance) {
@@ -163,9 +168,10 @@ public abstract class Actionable : MonoBehaviour {
     }
 
     protected virtual void OnNextTurn(int turn) {
-        foreach(Actionable actionable in Actionable.moved) {
-            this.CurrentCell.Distances.Remove(actionable);
-        }
+        this.CurrentCell.Distances.Clear();
+        //// foreach(Actionable actionable in Actionable.moved) {
+        ////    this.CurrentCell.Distances.Remove(actionable);
+        ////}
     }
 
     protected virtual void OnLateNextTurn(int turn) {
