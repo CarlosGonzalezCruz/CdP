@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Muestra en la UI el número de tropas del ejército asociado a este contador
+
 [RequireComponent(typeof(CanvasGroup))]
 public class TroopCounter : MonoBehaviour {
 

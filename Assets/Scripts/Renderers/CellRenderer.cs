@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Se encarga de dibujar una casilla del color y el tamaño correcto
+
 [RequireComponent(typeof(Renderer))]
 public class CellRenderer : MonoBehaviour {
 

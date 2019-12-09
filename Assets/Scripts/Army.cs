@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Tipo de Actuable que puede moverse, conquistar y atacar
+
 [RequireComponent(typeof(PieceRenderer))]
 public class Army : Actionable {
 
@@ -101,6 +103,8 @@ public class Army : Actionable {
     #endregion
 
     #region Orders
+
+    // Se mueve a la casilla que quede en la dirección indicada
     public void Move(Direction direction) {
         this.direction = direction;
         var targetCell = this.CurrentCell.GetNeighbour(direction);
@@ -109,6 +113,7 @@ public class Army : Actionable {
         }
     }
 
+    // Ataca al ejército que se encuentre en la dirección indicada
     public void Attack(Direction direction) {
         this.direction = direction;
         var target = this.CurrentCell.GetNeighbour(direction)?.Army;
@@ -118,6 +123,7 @@ public class Army : Actionable {
         }
     }
 
+    // Se une al ejército que haya en la dirección indicada
     public void Join(Direction direction) {
         this.direction = direction;
         var target = this.CurrentCell.GetNeighbour(direction)?.Army;
@@ -127,6 +133,7 @@ public class Army : Actionable {
         }
     }
 
+    // Separa la mitad de sus tropas para generar un ejército nuevo en la casilla que queda en la dirección indicada
     public void Split(Direction direction) {
         this.direction = direction;
         var targetCell = this.CurrentCell.GetNeighbour(direction);
@@ -139,6 +146,7 @@ public class Army : Actionable {
         }
     }
 
+    // Conquista la casilla en la que se encuentra, pasando a estar bajo el control de la nación asignada a este ejército
     public void Claim() {
         this.CurrentCell.Nation = this.nation;
     }

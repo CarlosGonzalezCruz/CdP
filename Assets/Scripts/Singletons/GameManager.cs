@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Clase singleton general de uso variado y para acceso global
+
 [RequireComponent(typeof(Simulation))]
 public class GameManager : MonoBehaviour {
 

@@ -1,6 +1,9 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+// Indica todas las direcciones disponibles para el juego y las asocia a vectores que pueden usarse en cálculos de posición
+// El ángulo se utiliza para rotaciones en efectos visuales de los ejércitos
+
 public enum Direction {
     [DirectionInfo(0, 0, 0)]
     NONE,

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Clase base para aquellos elementos que pueden interactuar entre sí y cambiar el estado del mundo
+
 public abstract class Actionable : MonoBehaviour {
 
     [SerializeField]
@@ -78,9 +80,12 @@ public abstract class Actionable : MonoBehaviour {
             && GameManager.Instance.allowedMovement.Allows(offset.GetDirection());
     }
 
+    // Busca al actuable que cumpla un criterio y que sea más cercano a este. Si se le pasa un array, se llenará con
+    // sucesivos actuables cercanos que también cumplan el criterio
     public Actionable FindNearest(System.Func<Actionable, bool> criteria, Actionable[] found = null) {
         Actionable ret = null;
 
+        // Ordenamos la lista de actuables primero por cumplimiento del criterio, segundo por heurística
         var heuristics = GameManager.Instance.allowedMovement.GetHeuristics();
         Actionable.all.Sort((a, b) => {
             if(criteria(a) && !criteria(b)) return -1;
@@ -89,6 +94,8 @@ public abstract class Actionable : MonoBehaviour {
             return 0;
         });
         
+        // Los actuables más cercanos que cumplen el criterio están en la parte superior de la lista
+        // Vamos obteniendo actuables según sea necesario hasta llenar el array especificado
         var arrayIndex = 0;
         foreach(var possibleOutcome in Actionable.all) {
             if(criteria(possibleOutcome)) {
@@ -104,6 +111,8 @@ public abstract class Actionable : MonoBehaviour {
             }
         }
 
+        // Si no hemos llegado a llenar el array, vaciamos las posiciones de memoria que queden para no interferir
+        // con el resto del programa
         while(found != null && found.Length > arrayIndex) {
             found[arrayIndex++] = null;
         }
@@ -111,6 +120,7 @@ public abstract class Actionable : MonoBehaviour {
         return ret;
     }
 
+    // Igual que el método anterior, pero sólo encuentra actuables del subtipo especificado
     public Actionable FindNearestOfType<T>(System.Func<T, bool> criteria, T[] found = null) where T : Actionable {
         return this.FindNearest((actionable) => actionable is T && criteria((T) actionable), found);
     }
@@ -120,6 +130,8 @@ public abstract class Actionable : MonoBehaviour {
         GameObject.Destroy(this.gameObject);
     }
 
+    // Calcula la distancia desde este actuable hasta el destino, o devuelve la que ya había calculado previamente si el destino
+    // no se ha movido desde la última vez
     public int RequestDistanceFrom(Actionable other) {
         if(!this.CurrentCell.Distances.ContainsKey(other)) {
             Actionable.SpreadDistanceFromOrigin(other, this);
@@ -128,12 +140,15 @@ public abstract class Actionable : MonoBehaviour {
         return this.CurrentCell.Distances[other];
     }
 
+    // Partiendo del destino, asigna a todas las casillas que encuentra de camino al origen la distancia a la que queda
+    // Si el destino no se mueve, otras peticiones pueden aprovechar este mismo cálculo y no hay que repetirlo
     private static void SpreadDistanceFromOrigin(Actionable origin, Actionable dest) {
          
         var currentCell = origin.CurrentCell;
         var destCell = dest.CurrentCell;
         var heuristics = GameManager.Instance.allowedMovement.GetHeuristics();
 
+        // Partimos desde la casillas de destino, asignando distancia 0 y predecesor nulo
         currentCell.Distances[origin] = 0;
         Dictionary<Cell, Cell> predecessors = new Dictionary<Cell, Cell>();
         predecessors[currentCell] = null;
@@ -141,25 +156,33 @@ public abstract class Actionable : MonoBehaviour {
         List<Cell> proccessedCells = new List<Cell>();
         pendingCells.Add(currentCell);
 
+        // Seguimos hasta que encontremos la casillas de destino o hasta que nos quedemos sin casillas que revisar
         while(currentCell != destCell && pendingCells.Count > 0) {
             foreach(Cell neighbour in currentCell.GetNeighbours()) {
                 if(neighbour == null) {
                     continue;
                 }
 
-                var neighbourDistance = currentCell.Distances[origin] + 1; //TODO Cambiar esto cuando se implemente altura del terreno
+                // Marcamos como pendientes para mirar más tarde todas las casillas colindantes a la actual que no
+                // hayamos mirado ya
+                var neighbourDistance = currentCell.Distances[origin] + 1;
 
                 if(!neighbour.Distances.ContainsKey(origin) || neighbour.Distances[origin] > neighbourDistance) {
                     predecessors[neighbour] = currentCell;
                     neighbour.Distances[origin] = neighbourDistance;
+
+                    // Si la casilla está ahora más cerca que la última vez que lo comprobamos, quizás merezca la
+                    // pena revisar esta ruta de nuevo
                     proccessedCells.Remove(neighbour);
                 }
 
+                // Si todavía no hemos revisado la casilla y no está marcada para revisar, marcarla
                 if(!pendingCells.Contains(neighbour) && !proccessedCells.Contains(neighbour)) {
                     pendingCells.Add(neighbour);
                 }
             }
             
+            // La casilla actual ya está revisada. Ordenamos la lista siguiendo la heurística y pasamos a la siguiente
             pendingCells.Remove(currentCell);
             proccessedCells.Add(currentCell);
             pendingCells.Sort((a, b) => heuristics(a.coordinates, destCell.coordinates) - heuristics(b.coordinates, destCell.coordinates));

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+// Representa la contraparte relativa al juego de un arquitecto
+
 public class Nation : MonoBehaviour {
 
     public Color armyColor;
@@ -78,6 +80,7 @@ public class Nation : MonoBehaviour {
         return ret;
     }
 
+    // Actualiza las celdas adyacentes que pueden ser conquistadas
     public void UpdateAdjacentUnclaimedCells() {
         this.adjacentUnclaimedCells.Clear();
         foreach(var cell in this.cells) {
@@ -89,6 +92,7 @@ public class Nation : MonoBehaviour {
         }
     }
 
+    // Devuelve las celdas que, en el estado del mundo indicado, serían adyacentes y podrían ser conquistadas
     public HashSet<Cell> FindAdjacentUnclaimedCellsInWorldState(WorldState state) {
         var ret = new HashSet<Cell>();
         var claimedCells = state.NationClaims[this];
@@ -105,6 +109,8 @@ public class Nation : MonoBehaviour {
         return ret;
     }
 
+    // En caso de que el orden de ejecución se los scripts no esté funcionando correctamente, este método garantiza
+    // que al menos los sets importantes ya se han creado
     private void GuaranteeInitialization() {
         if(this.armies == null) {
             this.armies = new HashSet<Army>();
@@ -114,6 +120,7 @@ public class Nation : MonoBehaviour {
         }
     }
 
+    // Asigna la creación de un ejército del suit indicado a la casilla indicada
     private void ScheduleTroopCreation(Cell cell, Suit suit) {
         cell.ScheduleArmy(suit);
     }

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Se encarga de mostrar una ficha de ejército correctamente, con su respectivo color, marca de suit y contador de tropas
+
 public class PieceRenderer : MonoBehaviour {
 
     public GameObject troopCounterPrefab;
@@ -77,6 +79,10 @@ public class PieceRenderer : MonoBehaviour {
     }
 
     private void ApplyColor(Color color) {
+
+        // Usamos un MaterialPropertyBlock para poder modificar cómo se funciona el renderer de este objeto en particular
+        // sin modificar el material que usa (y por tantos sin afectar a otros objetos)
+
         var block = new MaterialPropertyBlock();
         if(this.renderer == null) {
             return;
@@ -89,6 +95,8 @@ public class PieceRenderer : MonoBehaviour {
     private void ApplySymbol() {
         var suitChild = this.transform.Find("Suit");
         var suitName = suit.GetName();
+
+        // Ocultamos todas las marcas de suit excepto la que corresponda al suit que realmente tiene el ejército
 
         foreach (Transform child in suitChild) {
             child.gameObject.SetActive(child.name == suitName);

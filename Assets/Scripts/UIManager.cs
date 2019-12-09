@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Componente contenedor para la UI
+
 public class UIManager : MonoBehaviour {
     
     public GameObject speedCounterItemPrefab;

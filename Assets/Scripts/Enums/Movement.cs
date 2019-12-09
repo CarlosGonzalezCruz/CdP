@@ -2,6 +2,8 @@ using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Indica el conjunto de direcciones que podrán utilizar los actuables
+
 public enum Movement {
     [MovementInfo(Direction.UP, Direction.DOWN, Direction.LEFT, Direction.RIGHT)]
     ORTHOGONAL,
@@ -70,11 +72,17 @@ public static class MovementExtensionMethods {
 
     #region Heuristics
     private static int OrthogonalHeuristics(Vector2Int a, Vector2Int b) {
-        // Manhattan
+        
+        // La heurística usada en ortogonal es la distancia Manhattan
+
         return Mathf.Abs(a.x - b.x) + Mathf.Abs(a.y - b.y);
     }
 
     private static int DiagonalHeuristics(Vector2Int a, Vector2Int b) {
+        
+        // La heurística usada en diagonal se basa en la distancia Chebyshev, con la limitación de que los elementos
+        // que estén en diagonales incompatibles son mutuamente inalcanzables y no pueden interactuar
+
         var xDistance = Mathf.Abs(a.x - b.x);
         var yDistance = Mathf.Abs(a.y - b.y);
         if(xDistance % 2 == yDistance % 2) {
@@ -85,7 +93,9 @@ public static class MovementExtensionMethods {
     }
 
     private static int FullHeuristics(Vector2Int a, Vector2Int b) {
-        // Chebyshev
+        
+        // La heurística usada cuando todas las direcciones están disponibles es la distancia Chebyshev
+
         return Mathf.Max(Mathf.Abs(a.x - b.x), Mathf.Abs(a.y - b.y));
     }
     #endregion

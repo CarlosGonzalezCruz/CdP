@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Este struct clasifica y separa las funciones de conveniencia de stats y las funciones de conveniencia de órdenes
 public struct ProfileInfo {
 
     #region Profile info type
@@ -37,6 +38,7 @@ public struct ProfileInfo {
     }
 }
 
+// Los perfiles asignan funciones de conveniencia a los stats y reflejan formas de jugar
 public class Profile {
 
    private Dictionary<Stat, System.Func<Architect, WorldState, float>> statConvenience;
@@ -93,11 +95,15 @@ public class Profile {
 
 public class Profiles {
 
+    // Perfil predeterminado y único disponible por ahora
+
     public static readonly Profile DEFAULT = new Profile(new ProfileInfo[] {
         
         new ProfileInfo(Stats.SIZE, (self, worldState) => {
             var ret = 0;
             foreach(var architect in worldState.Architects.Keys) {
+
+                // Valoramos más tener casillas propias que que los enemigos las tengan
                 if(architect == self) {
                     ret += 5 * worldState[architect][Stats.SIZE];
                 } else {
@@ -110,6 +116,8 @@ public class Profiles {
         new ProfileInfo(Stats.FULL_ARMY_AMOUNT, (self, worldState) => {
             var ret = 0;
             foreach(var architect in worldState.Architects.Keys) {
+
+                // Que los enemigos tengan muchas tropas es mucho menos conveniente que que nosotros las tengamos
                 if(architect == self) {
                     ret -= 1 * worldState[architect][Stats.FULL_ARMY_AMOUNT];
                 } else {
@@ -122,6 +130,7 @@ public class Profiles {
         new ProfileInfo(Stats.SPADE_AMOUNT, (self, worldState) => {
             var ret = 0;
             foreach(var architect in worldState.Architects.Keys) {
+                // Esto solo es poco conveniente si nuestros ejércitos son débiles
                 if(architect != self) {
                     ret -= 1 * worldState[architect][Stats.HEART_AMOUNT];
                 }
@@ -132,6 +141,7 @@ public class Profiles {
         new ProfileInfo(Stats.HEART_AMOUNT, (self, worldState) => {
             var ret = 0;
             foreach(var architect in worldState.Architects.Keys) {
+                // Esto solo es poco conveniente si nuestros ejércitos son débiles
                 if(architect != self) {
                     ret -= 1 * worldState[architect][Stats.CLUB_AMOUNT];
                 }
@@ -142,6 +152,7 @@ public class Profiles {
         new ProfileInfo(Stats.CLUB_AMOUNT, (self, worldState) => {
             var ret = 0;
             foreach(var architect in worldState.Architects.Keys) {
+                // Esto solo es poco conveniente si nuestros ejércitos son débiles
                 if(architect != self) {
                     ret -= 1 * worldState[architect][Stats.DIAMOND_AMOUNT];
                 }
@@ -152,6 +163,7 @@ public class Profiles {
         new ProfileInfo(Stats.DIAMOND_AMOUNT, (self, worldState) => {
             var ret = 0;
             foreach(var architect in worldState.Architects.Keys) {
+                // Esto solo es poco conveniente si nuestros ejércitos son débiles
                 if(architect != self) {
                     ret -= 1 * worldState[architect][Stats.SPADE_AMOUNT];
                 }
@@ -160,23 +172,29 @@ public class Profiles {
         }),
 
         new ProfileInfo(Orders.MOVE_TOWARDS, (subject, target, worldState) => {
+            // No tener ejércitos vuelve esta orden completamente inviable
             if(worldState[((Army) subject).Nation.Architect][Stats.FULL_ARMY_AMOUNT] <= 0) {
                 return -Mathf.Infinity;
             }
 
+            // Si ya estamos en la casilla que deberíamos, no es conveniente ni inconveniente
             var distance = subject.RequestDistanceFrom(target);
             if(distance == 0) {
                 return 0;
+
+            // Si no, cuanto más lejos esté menos conveniente es
             } else {
                 return -10 * subject.RequestDistanceFrom(target);
             }
         }),
 
         new ProfileInfo(Orders.ATTACK, (subject, target, worldState) => {
+            // No tener ejércitos vuelve esta orden completamente inviable
             if(worldState[((Army) subject).Nation.Architect][Stats.FULL_ARMY_AMOUNT] <= 0) {
                 return -Mathf.Infinity;
             }
 
+            // Atacar a un ejército contra el que somos débiles es menos conveniente
             var ret = 0;
             if(!((Army) target).Suit.IsWeakAgainst(((Army) subject).Suit)) {
                 ret = -2;
@@ -185,14 +203,17 @@ public class Profiles {
         }),
 
         new ProfileInfo(Orders.CLAIM, (subject, target, worldState) => {
+            // No tener ejércitos vuelve esta orden completamente inviable
             if(worldState[((Army) subject).Nation.Architect][Stats.FULL_ARMY_AMOUNT] <= 0) {
                 return -Mathf.Infinity;
             }
 
+            // Si la casilla ya está conquistada, esta orden es una pérdida de tiempo
             if(((Cell) target).Nation == ((Army) subject).Nation) {
                 return -Mathf.Infinity;
             }
 
+            // Conquistar una casilla es tan inconveniente como lejos esté
             var distance = subject.RequestDistanceFrom(target);
             if(distance == 0 || worldState[((Army) subject).Nation.Architect][Stats.SIZE] == 0) {
                 return 0;
@@ -202,7 +223,10 @@ public class Profiles {
 
         new ProfileInfo(Orders.BUILD_SPADE, (cell, target, worldState) => {
             var architect = ((Cell) cell).Nation.Architect;
+
+            // Si ya hemos llegado al tope de tropas que podemos tener por cada casilla, no se pueden generar más
             if(worldState[architect][Stats.FULL_ARMY_AMOUNT] < worldState[architect][Stats.SIZE]) {
+                // Si ya hay un ejército en esa casilla no podemos construir más
                 if(((Cell) cell).Army != null) {
                     return -Mathf.Infinity;
                 } else {
@@ -215,6 +239,8 @@ public class Profiles {
 
         new ProfileInfo(Orders.BUILD_HEART, (cell, target, worldState) => {
             var architect = ((Cell) cell).Nation.Architect;
+
+            // Si ya hemos llegado al tope de tropas que podemos tener por cada casilla, no se pueden generar más
             if(worldState[architect][Stats.FULL_ARMY_AMOUNT] < worldState[architect][Stats.SIZE]) {
                 return 0;
             } else {
@@ -224,6 +250,8 @@ public class Profiles {
 
         new ProfileInfo(Orders.BUILD_CLUB, (cell, target, worldState) => {
             var architect = ((Cell) cell).Nation.Architect;
+
+            // Si ya hemos llegado al tope de tropas que podemos tener por cada casilla, no se pueden generar más
             if(worldState[architect][Stats.FULL_ARMY_AMOUNT] < worldState[architect][Stats.SIZE]) {
                 return 0;
             } else {
@@ -233,6 +261,8 @@ public class Profiles {
 
         new ProfileInfo(Orders.BUILD_DIAMOND, (cell, target, worldState) => {
             var architect = ((Cell) cell).Nation.Architect;
+
+            // Si ya hemos llegado al tope de tropas que podemos tener por cada casilla, no se pueden generar más
             if(worldState[architect][Stats.FULL_ARMY_AMOUNT] < worldState[architect][Stats.SIZE]) {
                 return 0;
             } else {
@@ -241,7 +271,7 @@ public class Profiles {
         })
     });
 
-    #region Allow iteration through profiles
+    #region Permitir iterar perfiles
     private static List<Profile> profiles;
     public static void RegisterProfile(Profile stat) {
         if(Profiles.profiles == null) {
@@ -254,6 +284,7 @@ public class Profiles {
         return Profiles.profiles;
     }
 
+    // Este enumerado permite acceder a los perfiles mediante un menú desplegable en el inspector
     public enum Enum {
         DEFAULT
     }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+// Clase singleton que representa el tablero
+
 public class BoardManager : MonoBehaviour {
     
     #region Singleton
@@ -19,9 +21,14 @@ public class BoardManager : MonoBehaviour {
     }
     #endregion
 
+    // Prefab para usar al generar el tablero a base de casillas
     public Cell cellPrefab;
+
+    // Dimensiones en número de casillas
     public int width;
     public int height;
+
+    // Indica si los ejércitos pueden circunnavegar el tablero
     public bool wrapsAround;
 
     private Dictionary<Vector2Int, Cell> cells;
@@ -60,6 +67,7 @@ public class BoardManager : MonoBehaviour {
         return new Bounds(this.transform.position, new Vector3(width, 1, height));
     }
 
+    // Esta función es necesaria puesto que el operador % no funciona como cabría esperar con números negativos (es resto, no módulo)
     private int Modulo(int a, int b) {
         if(a >= 0) {
             return a % b;

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+// Permite mover la vista usando la rueda del ratón
+// Presionar y arrastrar para mover la vista a los lados; desplazar o hacer scroll para acercar y alejar
+
 public class CameraController : MonoBehaviour {
 
     public float dragFactor = 1f;

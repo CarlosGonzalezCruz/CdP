@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Tipo pasivo de actuable que puede ser conquistado y puede generar ejércitos
+
 [RequireComponent(typeof(CellRenderer))]
 public class Cell : Actionable {
 
@@ -105,11 +107,13 @@ public class Cell : Actionable {
         return this.neighbours.Values.ToList();
     }
 
+    // Este método establece las referencias correctas para que la nación tenga en cuenta que esta casilla existe
     public void ConnectToNation() {
         this.Nation = this.nation;
         this.Nation.Cells.Add(this);
     }
 
+    // Prepara esta casilla para generar un ejército del suit indicado dentro de varios turnos
     public void ScheduleArmy(Suit suit) {
         if(this.scheduledTroopCounter <= 0) {
             if(Random.value < 0.1) {
@@ -146,6 +150,7 @@ public class Cell : Actionable {
         }
     }
 
+    // Si es el momento, genera el ejército preparado. Si no, avanza un turno hacia dicho momento
     private void CreateScheduledArmies() {
         if(this.Army != null &&
           (this.Army.Nation != this.Nation || (this.scheduledTroop.HasValue && this.Army.Suit != this.scheduledTroop.Value))) {

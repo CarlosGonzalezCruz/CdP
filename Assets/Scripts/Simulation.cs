@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// Clase singleton que se encarga del flujo y control de la simulación, así como de despachar los eventos de turno siguiente
+
 public class Simulation : MonoBehaviour {
 
     public event System.Action<int> onNextTurn;

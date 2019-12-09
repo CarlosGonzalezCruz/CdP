@@ -1,5 +1,8 @@
 using System.Collections.Generic;
 
+// Indica los suits de los que pueden formar parte los ejércitos. En los atributos del enumerado se especifica contra
+// qué suit es débil el suit en cuestión
+
 public enum Suit {
     [SuitInfo("Spade", HEART)]
     SPADE,
@@ -32,7 +35,7 @@ public static class SuitExtensionMethods {
     private static SuitInfoAttribute Get(Suit suit) {
         if(!cachedAttributes.ContainsKey(suit)) {
             var suitKey = System.Enum.GetName(typeof(Suit), suit);
-        var suitInfo = typeof(Suit).GetField(suitKey).GetCustomAttributes(false)[0] as SuitInfoAttribute;
+            var suitInfo = typeof(Suit).GetField(suitKey).GetCustomAttributes(false)[0] as SuitInfoAttribute;
             cachedAttributes[suit] = suitInfo;
         }
 
